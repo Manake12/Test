@@ -1474,18 +1474,6 @@ spawn(function()
 	end
 end)
 
-local Toggle = Tabs.Main:AddToggle("Auto_Farm_Quest", {Title = "Auto Farm Quest", Default = false })
-
-Toggle:OnChanged(function()
-	_G.Auto_Farm_Quest = Options.Auto_Farm_Quest.Value
-	if Options.Auto_Farm_Quest.Value == false then
-		getgenv().ToTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-	end
-	SaveSettings()
-end)
-
-Options.Auto_Farm_Quest:SetValue(_G.Auto_Farm_Quest)
-
 local Toggle = Tabs.Main:AddToggle("Auto_Farm_Mob_Aura", {Title = "Auto Farm Mob Aura", Default = false })
 
 Toggle:OnChanged(function()
