@@ -3957,7 +3957,7 @@ elseif World3 then
 		end
 	end)
 
-	Tabs.Main:AddSection("Cursed Dual Katana")
+--[[	Tabs.Main:AddSection("Cursed Dual Katana")
 
 
 	local Toggle = Tabs.Main:AddToggle("Auto_Cursed_Dual_Katana", {Title = "Auto Cursed Dual Katana", Default = false })
@@ -4430,7 +4430,7 @@ elseif World3 then
 	-- 	game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CDKQuest","BoatQuest", workspace.NPCs:FindFirstChild("Luxury Boat Dealer"))
 	-- 	Tushita_Quest1 = false
 	-- end})
-
+]]--
 	Tabs.Main:AddSection("Serpent Bow")
 
 	local Toggle = Tabs.Main:AddToggle("Auto_Serpent_Bow", {Title = "Auto Serpent Bow", Default = false })
