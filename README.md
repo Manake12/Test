@@ -332,7 +332,7 @@ if _G.Config then
 		_G.Auto_Tushita = true
 	end
 
-	if _G.Settings.Sword["Auto Cursed Dual Katana"] then
+	if _G.Settings.Main["Auto Cursed Dual Katana"] then
 		_G.Auto_Cursed_Dual_Katana = true
 	end
 
