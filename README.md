@@ -3630,7 +3630,7 @@ elseif World3 then
 
 	Options.Auto_Buddy_Sword_Hop:SetValue(_G.Auto_Buddy_Sword_Hop)
 
-	Tabs.Main:AddSection("Boss Hallow")
+--[[	Tabs.Main:AddSection("Boss Hallow")
 
 	local Toggle = Tabs.Main:AddToggle("Auto_Farm_Boss_Hallow", {Title = "Auto Farm Boss Hallow", Default = false })
 
@@ -3692,7 +3692,7 @@ elseif World3 then
 
 	Options.Auto_Farm_Boss_Hallow:SetValue(_G.Auto_Farm_Boss_Hallow_Hop)
 
---[[	Tabs.Main:AddSection("Twin Hook")
+	Tabs.Main:AddSection("Twin Hook")
 
 	local Toggle = Tabs.Main:AddToggle("Twin_Hook", {Title = "Auto Twin Hook", Default = false })
 
