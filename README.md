@@ -3668,17 +3668,15 @@ elseif World3 then
 							end
 						end
 					else
-						getgenv().ToTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
-					end
-				else 
-					if _G.Auto_Farm_Boss_Hallow_Hop and not game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper [Lv. 2100] [Raid Boss]") then
-						Hop()
-					else						
 						if (CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 2000 then
 							BTP(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
 							return
 						end
 						getgenv().ToTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
+					end
+				else 
+					if _G.Auto_Farm_Boss_Hallow_Hop and not game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper [Lv. 2100] [Raid Boss]") then
+						Hop()
 					end
 				end
 			end)
