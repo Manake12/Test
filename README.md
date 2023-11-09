@@ -1,9 +1,9 @@
-_G.Config = false
+_G.Config = true
 _G.Settings = {
 
 	Main = {
 		["Auto Farm Level"] = false,
-		["Auto Farm Quest"] = false,
+		--[[["Auto Farm Quest"] = false,]]--
 		["Auto Farm Fast"] = false,
 		["Auto Farm Mob Arua"] = false,
 
