@@ -2030,7 +2030,7 @@ spawn(function()
 		local MyLevel = game.Players.LocalPlayer.Data.Level.Value
 		local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 		pcall(function()
-			if _G.Auto_Farm_BF_Mastery and _G.Auto_Farm_Quest == true then
+			if _G.Auto_Farm_BF_Mastery then
 				if QuestC.Visible == true then
 					if game:GetService("Workspace").Enemies:FindFirstChild(QuestCheck()[3]) then
 						for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -2088,47 +2088,6 @@ spawn(function()
 							if v.Name == QuestCheck()[6] then local CFrameEnemySpawns = v.CFrame  wait(0.5)
 								getgenv().ToTarget(CFrameEnemySpawns * MethodFarm)
 							end
-						end
-					end
-				end
-			else
-				if game:GetService("Workspace").Enemies:FindFirstChild(QuestCheck()[3]) then
-					for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-						if v.Name == QuestCheck()[3] then
-							if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-								HealthMs = v.Humanoid.MaxHealth * _G.Kill_At/100
-								repeat task.wait()
-									if v.Humanoid.Health <= HealthMs then
-										AutoHaki()
-										EquipWeapon(game:GetService("Players").LocalPlayer.Data.DevilFruit.Value)
-										getgenv().ToTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-										v.HumanoidRootPart.CanCollide = false
-										PosMonMasteryFruit = v.HumanoidRootPart.CFrame
-										v.Humanoid.WalkSpeed = 0
-										v.Head.CanCollide = false
-										UseSkill = true
-									else           
-										UseSkill = false 
-										AutoHaki()
-										EquipWeapon(_G.Select_Weapon)
-										getgenv().ToTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-										v.HumanoidRootPart.CanCollide = false
-										v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-										PosMonMasteryFruit = v.HumanoidRootPart.CFrame
-										v.Humanoid.WalkSpeed = 0
-										v.Head.CanCollide = false
-									end
-									StartMasteryFruitMagnet = true
-								until not _G.Auto_Farm_BF_Mastery or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
-							end
-						end
-					end
-				else
-					StartMasteryFruitMagnet = false   
-					UseSkill = false 
-					for i,v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
-						if v.Name == QuestCheck()[6] then local CFrameEnemySpawns = v.CFrame  wait(0.5)
-							getgenv().ToTarget(CFrameEnemySpawns * MethodFarm)
 						end
 					end
 				end
@@ -2333,7 +2292,7 @@ spawn(function()
 		local MyLevel = game.Players.LocalPlayer.Data.Level.Value
 		local QuestC = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 		pcall(function()
-			if _G.Auto_Farm_Gun_Mastery and _G.Auto_Farm_Quest == true then
+			if _G.Auto_Farm_Gun_Mastery then
 				if QuestC.Visible == true then
 					if game:GetService("Workspace").Enemies:FindFirstChild(QuestCheck()[3]) then
 						for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -2396,52 +2355,6 @@ spawn(function()
 							if v.Name == QuestCheck()[6] then local CFrameEnemySpawns = v.CFrame  wait(0.5)
 								getgenv().ToTarget(CFrameEnemySpawns * MethodFarm)
 							end
-						end
-					end
-				end
-			else
-				if game:GetService("Workspace").Enemies:FindFirstChild(QuestCheck()[3]) then
-					for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-						if v.Name == QuestCheck()[3] then
-							if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-								repeat task.wait()
-									if string.find(QuestC.Container.QuestTitle.Title.Text, QuestCheck()[6]) then
-										HealthMin = v.Humanoid.MaxHealth * _G.Kill_At/100
-										if v.Humanoid.Health <= HealthMin then                                                
-											EquipWeapon(SelectWeaponGun)
-											getgenv().ToTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-											v.Humanoid.WalkSpeed = 0
-											v.HumanoidRootPart.CanCollide = false
-											v.HumanoidRootPart.Size = Vector3.new(2,2,1)
-											v.Head.CanCollide = false                                                
-											local args = {
-												[1] = v.HumanoidRootPart.Position,
-												[2] = v.HumanoidRootPart
-											}
-											game:GetService("Players").LocalPlayer.Character[SelectWeaponGun].RemoteFunctionShoot:InvokeServer(unpack(args))
-										else
-											AutoHaki()
-											EquipWeapon(_G.Select_Weapon)
-											v.Humanoid.WalkSpeed = 0
-											v.HumanoidRootPart.CanCollide = false
-											v.Head.CanCollide = false               
-											v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-											getgenv().ToTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-										end
-										StartMasteryGunMagnet = true 
-										PosMonMasteryGun = v.HumanoidRootPart.CFrame
-									else
-										StartMasteryGunMagnet = false
-										game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-									end
-								until not _G.Auto_Farm_Gun_Mastery or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
-							end
-						end
-					end
-				else
-					for i,v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
-						if v.Name == QuestCheck()[6] then local CFrameEnemySpawns = v.CFrame  wait(0.5)
-							getgenv().ToTarget(CFrameEnemySpawns * MethodFarm)
 						end
 					end
 				end
