@@ -1,4 +1,3 @@
-
 _G.Config = true
 _G.Settings = {
 
@@ -1000,14 +999,6 @@ function EquipWeapon(ToolSe)
 	end
 end
 
-function BTP(P)
-	repeat wait(1)
-		game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = P
-		task.wait()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = P
-	until (P.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1500
-end
 
 
 local function GetIsLand(...)
