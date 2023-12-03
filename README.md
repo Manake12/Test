@@ -3036,45 +3036,6 @@ end
 
 -- [Save Settings]
 
-function LoadSettings()
-	if readfile and writefile and isfile and isfolder then
-		if not isfolder("Manake Hub Premium Scripts") then
-			makefolder("Manake Hub Premium Scripts")
-		end
-		if not isfolder("Manake Hub Premium Scripts/Blox Fruits/") then
-			makefolder("Manake Hub Premium Scripts/Blox Fruits/")
-		end
-		if not isfile("Manake Hub Premium Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-			writefile("Manake Hub Premium Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(_G.Settings))
-		else
-			local Decode = game:GetService("HttpService"):JSONDecode(readfile("Manake Hub Premium Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
-			for i,v in pairs(Decode) do
-				_G.Settings[i] = v
-			end
-		end
-	else
-		return warn("Status : Undetected Executor")
-	end
-end
-
-function SaveSettings()
-	if readfile and writefile and isfile and isfolder then
-		if not isfile("Manake Hub Premium Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-			LoadSettings()
-		else
-			local Decode = game:GetService("HttpService"):JSONDecode(readfile("Manake Hub Premium Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
-			local Array = {}
-			for i,v in pairs(_G.Settings) do
-				Array[i] = v
-			end
-			writefile("Manake Hub Premium Scripts/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(Array))
-		end
-	else
-		return warn("Status : Undetected Executor")
-	end
-end
-
-LoadSettings()
 
 function FPSBooster()
 	local decalsyeeted = true
