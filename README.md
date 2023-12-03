@@ -7366,7 +7366,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Start_Dungeon:SetValue(G.Auto_Start_Dungeon)
+Options.Auto_Start_Dungeon:SetValue(_G.Auto_Start_Dungeon)
 
 spawn(function()
 	while wait() do
