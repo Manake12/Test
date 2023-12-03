@@ -3036,7 +3036,6 @@ end
 
 -- [Save Settings]
 
-
 function FPSBooster()
 	local decalsyeeted = true
 	local g = game
