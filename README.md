@@ -1359,32 +1359,40 @@ spawn(function()
 		pcall(function()
 			if _G.Auto_Farm_Level then
 				if QuestC.Visible == true then
-					for _i,_v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-						if string.find(_v.Name,QuestCheck()[3]) then
-							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-								if string.find(v.Name,QuestCheck()[3]) then
-									if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-										repeat wait()
-											if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, QuestCheck()[6]) then
-												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-											else
-												PosMon = v.HumanoidRootPart.CFrame
-												v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-												v.HumanoidRootPart.CanCollide = false
-												v.Humanoid.WalkSpeed = 0
-												v.Head.CanCollide = false
-												BringMobFarm = true
-												AutoHaki()
-												EquipWeapon(_G.Select_Weapon)
-												v.HumanoidRootPart.Transparency = 1
-												getgenv().ToTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-											end
-										until not _G.Auto_Farm_Level or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
+					if game:GetService("Workspace").Enemies:FindFirstChild(QuestCheck()[3]) then
+						for _i,_v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+							if string.find(_v.Name,QuestCheck()[3]) then
+								for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+									if string.find(v.Name,QuestCheck()[3]) then
+										if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+											repeat wait()
+												if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, QuestCheck()[6]) then
+													game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+												else
+													PosMon = v.HumanoidRootPart.CFrame
+													v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+													v.HumanoidRootPart.CanCollide = false
+													v.Humanoid.WalkSpeed = 0
+													v.Head.CanCollide = false
+													BringMobFarm = true
+													AutoHaki()
+													EquipWeapon(_G.Select_Weapon)
+													v.HumanoidRootPart.Transparency = 1
+													getgenv().ToTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+												end
+											until not _G.Auto_Farm_Level or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
+										end
 									end
 								end
 							end
+						end 
+					else
+						for i,v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
+							if v.Name == QuestCheck()[6] then local CFrameEnemySpawns = v.CFrame  wait(0.5)
+								getgenv().ToTarget(CFrameEnemySpawns * MethodFarm)
+							end
 						end
-					end 
+					end
 				else
 					if (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 2000 then
 						BTP(QuestCheck()[2])
@@ -1400,7 +1408,6 @@ spawn(function()
 						for i,v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
 							if v.Name == QuestCheck()[6] then local CFrameEnemySpawns = v.CFrame  wait(0.5)
 								getgenv().ToTarget(CFrameEnemySpawns * MethodFarm)
-
 							end
 						end
 					end
