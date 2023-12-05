@@ -1398,13 +1398,13 @@ spawn(function()
 						BTP(QuestCheck()[2])
 						return
 					end
-					repeat wait() getgenv().ToTarget(QuestCheck()[2]) until (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 0 or not _G.Auto_Farm_Level
+					repeat wait() getgenv().ToTarget(QuestCheck()[2]) until (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.Auto_Farm_Level
 					if (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
 						BringMobFarm = false
 						wait(0.2)
 						game:GetService('ReplicatedStorage').Remotes.CommF_:InvokeServer("StartQuest", QuestCheck()[4], QuestCheck()[1]) wait(0.5)
 					else
-						repeat wait() getgenv().ToTarget(QuestCheck()[2]) until (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 0 or not _G.Auto_Farm_Level
+						repeat wait() getgenv().ToTarget(QuestCheck()[2]) until (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.Auto_Farm_Level
 						for i,v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
 							if v.Name == QuestCheck()[6] then local CFrameEnemySpawns = v.CFrame  wait(0.5)
 								getgenv().ToTarget(CFrameEnemySpawns * MethodFarm)
@@ -3123,24 +3123,13 @@ elseif World3 then
 
 	Tabs.Main:AddSection("Elite Hunter")
 
-	spawn(function()
-		pcall(function()
-			while wait() do
-				if game:GetService("ReplicatedStorage"):FindFirstChild("Diablo [Lv. 1750]") or game:GetService("ReplicatedStorage"):FindFirstChild("Deandre [Lv. 1750]") or game:GetService("ReplicatedStorage"):FindFirstChild("Urban [Lv. 1750]") or game:GetService("Workspace").Enemies:FindFirstChild("Diablo [Lv. 1750]") or game:GetService("Workspace").Enemies:FindFirstChild("Deandre [Lv. 1750]") or game:GetService("Workspace").Enemies:FindFirstChild("Urban [Lv. 1750]") then
-					Tabs.Main:AddParagraph({
-						Title = "Elite Hunter",
-						Content = "EliteHunter : Is Spawn"
-					})
-				else
-					Tabs.Main:AddParagraph({
-						Title = "Elite Hunter",
-						Content = "EliteHunter : Not Spawned"
-					})
-				end
-			end
-		end)
-	end)
-
+	Tabs.Main:AddParagraph({
+		Title = "Elite Hunter",
+		Content = "EliteHunter : Not Spawned"
+	})
+	
+	
+	
 	local Toggle = Tabs.Main:AddToggle("Auto_Elite_Hunter", {Title = "Auto Elite Hunter", Default = false })
 
 	Toggle:OnChanged(function()
@@ -3220,17 +3209,11 @@ elseif World3 then
 	Options.Auto_Elite_Hunter_Hop:SetValue(_G.Settings.Main["Auto Elite Hunter Hop"])
 
 	Tabs.Main:AddSection("Bone")
-
-	spawn(function()
-		pcall(function()
-			while wait() do
-				Tabs.Main:AddParagraph({
-					Title = "Bone",
-					Content = "🦴 Bone : "..(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check"))
-				})
-			end
-		end)
-	end)
+	
+	Tabs.Main:AddParagraph({
+		Title = "Bone",
+		Content = "🦴 Bone : "..(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Check"))
+	})
 
 
 	local Toggle = Tabs.Main:AddToggle("Auto_Farm_Bone", {Title = "Auto Farm Bone", Default = false })
@@ -3314,30 +3297,21 @@ elseif World3 then
 	end)
 
 	Tabs.Main:AddSection("Cake Prince")
+	
+	Tabs.Main:AddParagraph({Title = "Cake Prince",Content = MobKilled,})
+
 
 	spawn(function()
 		while wait() do
 			pcall(function()
 				if string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 88 then
-					Tabs.Main:AddParagraph({
-						Title = "Cake Prince",
-						Content = "🎂 Need Kill Mods : "..string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"),39,41)
-					})
+					MobKilled:SetText(" 🎂 Need Kill Mods : "..string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"),39,41))
 				elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 87 then
-					Tabs.Main:AddParagraph({
-						Title = "Cake Prince",
-						Content = "🎂 Need Kill Mods : "..string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"),39,40)
-					})
+					MobKilled:SetText(" 🎂 Need Kill Mods : "..string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"),39,40))
 				elseif string.len(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")) == 86 then
-					Tabs.Main:AddParagraph({
-						Title = "Cake Prince",
-						Content = "🎂 Need Kill Mods : "..string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"),39,39)
-					})
+					MobKilled:SetText(" 🎂 Need Kill Mods : "..string.sub(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner"),39,39))
 				else
-					Tabs.Main:AddParagraph({
-						Title = "Cake Prince",
-						Content = "🎂 Katakuri Is Spawning"
-					})
+					MobKilled:SetText(" 🎂 Katakuri Is Spawning")
 				end
 			end)
 		end
@@ -3479,16 +3453,16 @@ elseif World3 then
 								StartMagnet = false
 							end
 						end
-					end
-				else 
-					if _G.Auto_Buddy_Sword_Hop and not game:GetService("Workspace").Enemies:FindFirstChild("Cake Queen [Lv. 2175] [Boss]") then
-						Hop()
-					else						
+					else
 						if (CFrame.new(5525.7045898438, 262.90060424805, -6755.1186523438).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 2000 then
 							BTP(CFrame.new(5525.7045898438, 262.90060424805, -6755.1186523438))
 							return
 						end
 						getgenv().ToTarget(CFrame.new(5525.7045898438, 262.90060424805, -6755.1186523438))
+					end
+				else 
+					if _G.Auto_Buddy_Sword_Hop and not game:GetService("Workspace").Enemies:FindFirstChild("Cake Queen [Lv. 2175] [Boss]") then
+						Hop()
 					end
 				end
 			end)
@@ -3543,17 +3517,15 @@ elseif World3 then
 							end
 						end
 					else
-						getgenv().ToTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
-					end
-				else 
-					if _G.Auto_Farm_Boss_Hallow_Hop and not game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper [Lv. 2100] [Raid Boss]") then
-						Hop()
-					else						
 						if (CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 2000 then
 							BTP(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
 							return
 						end
 						getgenv().ToTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
+					end
+				else 
+					if _G.Auto_Farm_Boss_Hallow_Hop and not game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper [Lv. 2100] [Raid Boss]") then
+						Hop()
 					end
 				end
 			end)
