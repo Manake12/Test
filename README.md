@@ -3587,7 +3587,7 @@ elseif World3 then
 		end
 	end)
 
-	local Toggle = Tabs.Main:AddToggle("Twin_Hook_Hop", {Title = "Auto Twin Hook Hop", Default = false })
+	local Toggle = Tabs.Main:AddToggle("Auto_Twin_Hook_Hop", {Title = "Auto Twin Hook Hop", Default = false })
 
 	Toggle:OnChanged(function()
 		_G.Auto_Twin_Hook_Hop = Options.Auto_Twin_Hook_Hop.Value
