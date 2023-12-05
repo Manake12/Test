@@ -749,28 +749,6 @@ local function QuestCheck()
 		LevelRequire = 775
 	end
 	MobName = MobName:sub(1,#MobName)
-	if not MobName:find("Lv") then
-		for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-			MonLV = string.match(v.Name, "%d+")
-			if v.Name:find(MobName) and #v.Name > #MobName and tonumber(MonLV) <= Lvl + 50 then
-				MobName = v.Name
-			end
-		end
-	end
-	if not MobName:find("Lv") then
-		for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-			MonLV = string.match(v.Name, "%d+")
-			if v.Name:find(MobName) and #v.Name > #MobName and tonumber(MonLV) <= Lvl + 50 then
-				MobName = v.Name
-				Mon = a
-			end
-		end
-	end
-	for _,v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
-		if v.Name == MobName then
-			MobCFrame = v.CFrame * CFrame.new(0,30,0)
-		end
-	end
 
 	return {
 		[1] = QuestLevel,
