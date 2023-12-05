@@ -140,7 +140,7 @@ _G.Settings = {
 	Boss = {
 		["Auto Quest Boss"] = false,
 		["Auto Farm Boss"] = false,
-		["Auto Farm All Boss"] = true,
+		["Auto Farm All Boss"] = false,
 	},
 
 	Mastery = {
@@ -149,11 +149,8 @@ _G.Settings = {
 	},
 
 	Configs = {
-		["Disabled Damage Text"] = false,
-		["Double Quest"] = false,
-		["Bypass TP"] = false,
+		["Disabled Damage Text"] = true,
 		["Disabled Damage"] = false,
-
 		["Fast Attack"] = true,
 		["Bring Mob"] = true,
 		["Auto Rejoin"] = true,
@@ -888,71 +885,39 @@ function GetWeaponInventory(Weaponname)
 	return false
 end
 
-getgenv().ToTarget = function(Pos)
-	local r = game:GetService("Players").LocalPlayer
-	local xTweenPosition = {}
-	if not game.Players.LocalPlayer.Character:FindFirstChild("Root")then 
-		local K = Instance.new("Part",game.Players.LocalPlayer.Character) -- Create part
-		K.Size = Vector3.new(20,0.5,20)
-		K.Name = "Root"
-		K.Anchored = true
-		K.Transparency = 1
-		K.CanCollide = false
-		K.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0.6,0) --spawn at player
-	end
-	local Tween_Service = game:service"TweenService"
-	local TweenPosition = (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude -- diatance 
-	local Magnitude=TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.Root.Position-Pos.Position).Magnitude/200,Enum.EasingStyle.Linear) -- Create Tween
-	local function PartToPlayers() --teleport parta to player
-		game.Players.LocalPlayer.Character.Root.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+getgenv().ToTarget = function(...)
+	local RealtargetPos = {...}
+	local targetPos = RealtargetPos[1]
+	local RealTarget
+	if type(targetPos) == "vector" then
+		RealTarget = CFrame.new(targetPos)
+	elseif type(targetPos) == "userdata" then
+		RealTarget = targetPos
+	elseif type(targetPos) == "number" then
+		RealTarget = CFrame.new(unpack(RealtargetPos))
 	end
 
-	local function PlayersToPart() -- teleport player to part
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.Root.CFrame
-	end
+	if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 then if tween then tween:Cancel() end repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health > 0; wait(0.2) end
 
-	function xTweenPosition:Stop() --stop tween
+	local tweenfunc = {}
+	local Distance = (RealTarget.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
+
+	local tween_s = game:service"TweenService"
+	local info = TweenInfo.new((RealTarget.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).Magnitude/210, Enum.EasingStyle.Linear)
+	local tweenw, err = pcall(function()
+		tween = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = RealTarget})
+		tween:Play()
+	end)
+
+	function tweenfunc:Stop()
 		tween:Cancel()
-		game.Players.LocalPlayer.Character["Root"]:Destroy()
-		return tween
-	end
+	end 
 
-	if TweenPosition <= 0 then
-		pcall(function()
-			tween:Cancel()
-			game.Players.LocalPlayer.Character.Root.CFrame = Pos
-			game.Players.LocalPlayer.Character["Root"]:Destroy()
-		end)
-	end
+	function tweenfunc:Wait()
+		tween.Completed:Wait()
+	end 
 
-	task.spawn(function()
-		while wait() do -- or RenderStepped
-			pcall(function()
-				PlayersToPart()
-				if(game.Players.LocalPlayer.Character.Root.Position-game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >= 1 then
-					PartToPlayers()
-				elseif (Pos.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
-					game.Players.LocalPlayer.Character["Root"]:Destroy()
-				end
-			end)
-		end
-	end)
-	if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health <= 0 then 
-		if tween then 
-			tween:Cancel()
-			game.Players.LocalPlayer.Character["Root"]:Destroy()
-		end 
-		repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health > 0; wait(0.2)
-	end
-
-	local tween,error = pcall(function()
-		tween=Tween_Service:Create(
-			game.Players.LocalPlayer.Character["Root"],Magnitude,{CFrame=Pos})
-		tween:Play() 
-	end)
-	if not tween then return error end
-
-	return xTweenPosition
+	return tweenfunc
 end
 
 
