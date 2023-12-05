@@ -1406,7 +1406,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Farm_Level:SetValue(_G.Auto_Farm_Level)
+Options.Auto_Farm_Level:SetValue(_G.Settings.Main["Auto Farm Level"])
 
 
 spawn(function()
@@ -1467,8 +1467,6 @@ spawn(function()
 	end
 end)
 
-Options.Auto_Farm_Quest:SetValue(_G.Auto_Farm_Quest)
-
 local Toggle = Tabs.Main:AddToggle("Auto_Farm_Mob_Aura", {Title = "Auto Farm Mob Aura", Default = false })
 
 Toggle:OnChanged(function()
@@ -1479,7 +1477,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Farm_Mob_Aura:SetValue(_G.Auto_Farm_Mob_Aura)
+Options.Auto_Farm_Mob_Aura:SetValue(_G.Settings.Main["Auto Farm Mob Aura"])
 
 task.spawn(function()
 	while wait() do
@@ -1519,7 +1517,7 @@ if World1 then
 		SaveSettings()
 	end)
 
-	Options.Auto_New_World:SetValue(_G.Auto_New_World)
+	Options.Auto_New_World:SetValue(_G.Settings.Main["Auto New World"])
 
 	spawn(function()
 		while wait() do
@@ -1574,7 +1572,7 @@ if World1 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Saber:SetValue(_G.Auto_Saber)
+	Options.Auto_Saber:SetValue(_G.Settings.Main["Auto Saber"])
 
 	task.spawn(function()
 		while wait() do
@@ -1696,7 +1694,7 @@ if World1 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Pole:SetValue(_G.Auto_Pole)
+	Options.Auto_Pole:SetValue(_G.Settings.Main["Auto Pole"])
 
 	task.spawn(function()
 		while wait() do
@@ -1749,7 +1747,7 @@ if World1 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Buy_Ablility:SetValue(_G.Auto_Buy_Ablility)
+	Options.Auto_Buy_Ablility:SetValue(_G.Settings.Main["Auto Buy Ablility"])
 
 	task.spawn(function()
 		while wait() do
@@ -1860,7 +1858,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Farm_Boss:SetValue(_G.Auto_Farm_Boss)
+Options.Auto_Farm_Boss:SetValue(_G.Settings.Boss["Auto Farm Boss"])
 
 
 local Toggle = Tabs.Main:AddToggle("Auto_Quest_Boss", {Title = "Auto Quest Boss", Default = false })
@@ -1870,7 +1868,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Quest_Boss:SetValue(_G.Auto_Quest_Boss)
+Options.Auto_Quest_Boss:SetValue(_G.Settings.Boss["Auto Quest Boss"])
 
 
 spawn(function()
@@ -1972,7 +1970,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Farm_All_Boss:SetValue(_G.Auto_Farm_All_Boss)
+Options.Auto_Farm_All_Boss:SetValue(_G.Settings.Boss["Auto Farm All Boss"])
 
 spawn(function()
 	while wait() do
@@ -2017,7 +2015,7 @@ if _G.Auto_Farm_BF_Mastery == false then
 	UseSkill = false 
 end
 
-Options.Auto_Farm_BF_Mastery:SetValue(_G.Auto_Farm_BF_Mastery)
+Options.Auto_Farm_BF_Mastery:SetValue(_G.Settings.Mastery["Auto Farm Fruit Mastery"])
 
 spawn(function()
 	while wait() do
@@ -2260,7 +2258,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Farm_Gun_Mastery:SetValue(_G.Auto_Farm_Gun_Mastery)
+Options.Auto_Farm_Gun_Mastery:SetValue(_G.Settings.Mastery["Auto Farm Gun Mastery"])
 
 spawn(function()
 	pcall(function()
@@ -2376,7 +2374,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Third_World:SetValue(_G.Auto_Third_World)
+	Options.Auto_Third_World:SetValue(_G.Settings.Main["Auto Third World"])
 
 	task.spawn(function()
 		while wait() do
@@ -2616,7 +2614,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Rengoku:SetValue(_G.Auto_Rengoku)
+	Options.Auto_Rengoku:SetValue(_G.Settings.Main["Auto Rengoku"])
 
 	task.spawn(function()
 		while wait() do
@@ -2669,7 +2667,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Rengoku_Hop:SetValue(_G.Auto_Rengoku_Hop)
+	Options.Auto_Rengoku_Hop:SetValue(_G.Settings.Main["Auto Rengoku Hop"])
 
 	Tabs.Main:AddSection("Dragon Trident")
 
@@ -2683,7 +2681,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Dragon_Trident:SetValue(_G.Auto_Dragon_Trident)
+	Options.Auto_Dragon_Trident:SetValue(_G.Settings.Main["Auto Dragon Trident"])
 
 	spawn(function()
 		while wait() do
@@ -2725,7 +2723,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Dragon_Trident_Hop:SetValue(_G.Auto_Dragon_Trident)
+	Options.Auto_Dragon_Trident_Hop:SetValue(_G.Settings.Main["Auto Dragon Trident Hop"])
 
 	Tabs.Main:AddSection("Dark Coat")
 
@@ -2739,7 +2737,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Dark_Coat:SetValue(_G.Auto_Dark_Coat)
+	Options.Auto_Dark_Coat:SetValue(_G.Settings.Main["Auto Dark Coat"])
 
 	task.spawn(function()
 		while wait() do
@@ -2788,7 +2786,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Dark_Coat_Hop:SetValue(_G.Auto_Dark_Coat_Hop)
+	Options.Auto_Dark_Coat_Hop:SetValue(_G.Settings.Main["Auto Dark Coat Hop"])
 
 
 	Tabs.Main:AddSection("Swan Glasses")
@@ -2803,7 +2801,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Swan_Glasses:SetValue(_G.Auto_Swan_Glasses)
+	Options.Auto_Swan_Glasses:SetValue(_G.Settings.Main["Auto Swan Glasses"])
 
 	task.spawn(function()
 		while wait() do
@@ -2856,7 +2854,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Swan_Glasses_Hop:SetValue(_G.Auto_Swan_Glasses_Hop)
+	Options.Auto_Swan_Glasses_Hop:SetValue(_G.Settings.Main["Auto Swan Glasses Hop"])
 
 	Tabs.Main:AddSection("Other Function")
 
@@ -2870,7 +2868,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Bartilo_Quest:SetValue(_G.Auto_Bartilo_Quest)
+	Options.Auto_Bartilo_Quest:SetValue(_G.Settings.Main["Auto Bartilo Quest"])
 
 
 	task.spawn(function()
@@ -3009,7 +3007,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Ectoplasm:SetValue(_G.Auto_Ectoplasm)
+	Options.Auto_Ectoplasm:SetValue(_G.Settings.Main["Auto Ectoplasm"])
 
 	task.spawn(function()
 		while wait() do
@@ -3054,7 +3052,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Evo_Race_V2:SetValue(_G.Auto_Evo_Race_V2)
+	Options.Auto_Evo_Race_V2:SetValue(_G.Settings.Main["Auto Evo Race V2"])
 
 	spawn(function()
 		pcall(function()
@@ -3111,7 +3109,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_True_Triple_Katana:SetValue(_G.Auto_True_Triple_Katana)
+	Options.Auto_True_Triple_Katana:SetValue(_G.Settings.Main["Auto True Triple Katana"])
 
 
 	task.spawn(function()
@@ -3134,7 +3132,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Buy_Legendary_Sword:SetValue(_G.Auto_Buy_Legendary_Sword)
+	Options.Auto_Buy_Legendary_Sword:SetValue(_G.Settings.Main["Auto Buy Legendary Sword"])
 
 	task.spawn(function()
 		while wait() do
@@ -3155,7 +3153,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Buy_Enchanment_Haki:SetValue(_G.Auto_Buy_Enchanment_Haki)
+	Options.Auto_Buy_Enchanment_Haki:SetValue(_G.Settings.Main["Auto Buy Enchanment Haki"])
 
 	task.spawn(function()
 		while wait() do
@@ -3174,7 +3172,7 @@ if World2 then
 elseif World3 then
 
 	Tabs.Main:AddSection("Elite Hunter")
-	
+
 	spawn(function()
 		pcall(function()
 			while wait() do
@@ -3192,7 +3190,7 @@ elseif World3 then
 			end
 		end)
 	end)
-	
+
 	local Toggle = Tabs.Main:AddToggle("Auto_Elite_Hunter", {Title = "Auto Elite Hunter", Default = false })
 
 	Toggle:OnChanged(function()
@@ -3203,7 +3201,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Elite_Hunter:SetValue(_G.Auto_Elite_Hunter)
+	Options.Auto_Elite_Hunter:SetValue(_G.Settings.Main["Auto Elite Hunter"])
 
 
 	spawn(function()
@@ -3269,10 +3267,10 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Elite_Hunter_Hop:SetValue(_G.Auto_Elite_Hunter_Hop)
+	Options.Auto_Elite_Hunter_Hop:SetValue(_G.Settings.Main["Auto Elite Hunter Hop"])
 
 	Tabs.Main:AddSection("Bone")
-	
+
 	spawn(function()
 		pcall(function()
 			while wait() do
@@ -3295,7 +3293,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Farm_Bone:SetValue(_G.Auto_Farm_Bone)
+	Options.Auto_Farm_Bone:SetValue(_G.Settings.Main["Auto Farm Bone"])
 
 	spawn(function()
 		while wait() do
@@ -3348,7 +3346,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Random_Bone:SetValue(_G.Auto_Random_Bone)
+	Options.Auto_Random_Bone:SetValue(_G.Settings.Main["Auto Random Bone"])
 
 	spawn(function()
 		while wait(.1) do
@@ -3366,7 +3364,7 @@ elseif World3 then
 	end)
 
 	Tabs.Main:AddSection("Cake Prince")
-	
+
 	spawn(function()
 		while wait() do
 			pcall(function()
@@ -3405,7 +3403,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Cake_Prince:SetValue(_G.Auto_Cake_Prince)
+	Options.Auto_Cake_Prince:SetValue(_G.Settings.Main["Auto Cake Prince"])
 
 	spawn(function()
 		while wait() do
@@ -3474,7 +3472,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Cake_Prince:SetValue(_G.Auto_Spawn_Cake_Prince)
+	Options.Auto_Cake_Prince:SetValue(_G.Settings.Main["Auto Spawn Cake Prince"])
 
 	spawn(function()
 		while wait() do
@@ -3506,7 +3504,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Buddy_Sword:SetValue(_G.Auto_Buddy_Sword)
+	Options.Auto_Buddy_Sword:SetValue(_G.Settings.Main["Auto Buddy Sword"])
 
 
 	task.spawn(function()
@@ -3555,7 +3553,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Buddy_Sword_Hop:SetValue(_G.Auto_Buddy_Sword_Hop)
+	Options.Auto_Buddy_Sword_Hop:SetValue(_G.Settings.Main["Auto Buddy Sword Hop"])
 
 	Tabs.Main:AddSection("Boss Hallow")
 
@@ -3569,7 +3567,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Farm_Boss_Hallow:SetValue(_G.Auto_Farm_Boss_Hallow)
+	Options.Auto_Farm_Boss_Hallow:SetValue(_G.Settings.Main["Auto Farm Boss Hallow"])
 
 
 	task.spawn(function()
@@ -3619,7 +3617,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Farm_Boss_Hallow:SetValue(_G.Auto_Farm_Boss_Hallow_Hop)
+	Options.Auto_Farm_Boss_Hallow:SetValue(_G.Settings.Main["Auto Farm Boss Hallow Hop"])
 
 	Tabs.Main:AddSection("Twin Hook")
 
@@ -3633,7 +3631,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Twin_Hook:SetValue(_G.Auto_Twin_Hook)
+	Options.Auto_Twin_Hook:SetValue(_G.Settings.Main["Auto Twin Hook"])
 
 	spawn(function()
 		while wait() do
@@ -3674,7 +3672,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Twin_Hook_Hop:SetValue(_G.Auto_Twin_Hook_Hop)
+	Options.Auto_Twin_Hook_Hop:SetValue(_G.Settings.Main["Auto Twin Hook Hop"])
 
 	Tabs.Main:AddSection("Cavander")
 
@@ -3688,7 +3686,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Cavander:SetValue(_G.Auto_Cavander)
+	Options.Auto_Cavander:SetValue(_G.Settings.Main["Auto Cavander"])
 
 	task.spawn(function()
 		while wait() do
@@ -3739,7 +3737,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Cavander_Hop:SetValue(_G.Auto_Cavander_Hop)
+	Options.Auto_Cavander_Hop:SetValue(_G.Settings.Main["Auto Cavander Hop"])
 
 	Tabs.Main:AddSection("Yama")
 
@@ -3753,7 +3751,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Yama:SetValue(_G.Auto_Yama)
+	Options.Auto_Yama:SetValue(_G.Settings.Main["Auto Yama"])
 
 
 	local Yama_All_Mon = {
@@ -3824,7 +3822,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Tushita:SetValue(_G.Auto_Tushita)
+	Options.Auto_Tushita:SetValue(_G.Settings.Main["Auto Tushita"])
 
 	spawn(function()
 		while wait() do
@@ -3899,7 +3897,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Cursed_Dual_Katana:SetValue(_G.Auto_Cursed_Dual_Katana)
+	Options.Auto_Cursed_Dual_Katana:SetValue(_G.Settings.Main["Auto Cursed Dual Katana"])
 
 
 	spawn(function()
@@ -4372,7 +4370,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Serpent_Bow:SetValue(_G.Auto_Serpent_Bow)
+	Options.Auto_Serpent_Bow:SetValue(_G.Settings.Main["Auto Serpent Bow"])
 
 	task.spawn(function()
 		while wait() do
@@ -4417,7 +4415,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Serpent_Bow_Hop:SetValue(_G.Auto_Serpent_Bow_Hop)
+	Options.Auto_Serpent_Bow_Hop:SetValue(_G.Settings.Main["Auto Serpent Bow Hop"])
 
 	Tabs.Main:AddSection("Dark Dagger")
 
@@ -4431,7 +4429,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Dark_Dagger:SetValue(_G.Auto_Dark_Dagger)
+	Options.Auto_Dark_Dagger:SetValue(_G.Settings.Main["Auto Dark Dagger"])
 
 	task.spawn(function()
 		while wait() do
@@ -4478,7 +4476,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Dark_Dagger_Hop:SetValue(_G.Auto_Dark_Dagger_Hop)
+	Options.Auto_Dark_Dagger_Hop:SetValue(_G.Settings.Main["Auto Dark Dagger Hop"])
 
 	Tabs.Main:AddSection("Rainbow Haki")
 
@@ -4492,7 +4490,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Rainbow_Haki:SetValue(_G.Auto_Rainbow_Haki)
+	Options.Auto_Rainbow_Haki:SetValue(_G.Settings.Main["Auto Rainbow Haki"])
 
 	task.spawn(function()
 		while wait() do
@@ -4682,7 +4680,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Rainbow_Haki_Hop:SetValue(_G.Auto_Rainbow_Haki_Hop)
+	Options.Auto_Rainbow_Haki_Hop:SetValue(_G.Settings.Main["Auto Rainbow Haki Hop"])
 
 	Tabs.Main:AddSection("Musketeer")
 
@@ -4696,7 +4694,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Musketeer_Hat:SetValue(_G.Auto_Musketeer_Hat)
+	Options.Auto_Musketeer_Hat:SetValue(_G.Settings.Main["Auto Musketeer Hati"])
 
 	task.spawn(function()
 		while wait() do
@@ -4796,7 +4794,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Musketeer_Hat_Hop:SetValue(_G.Auto_Musketeer_Hat_Hop)
+	Options.Auto_Musketeer_Hat_Hop:SetValue(_G.Settings.Main["Auto Musketeer Hat Hop"])
 
 	Tabs.Main:AddSection("Other Function")
 
@@ -4810,7 +4808,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Ken_Haki_V2:SetValue(_G.Auto_Ken_Haki_V2)
+	Options.Auto_Ken_Haki_V2:SetValue(_G.Settings.Main["Auto Ken Haki V2"])
 
 	local Toggle = Tabs.Main:AddToggle("Teleport_to_Sea_Beast", {Title = "Teleport to Sea Beast", Default = false })
 
@@ -4822,7 +4820,7 @@ elseif World3 then
 		SaveSettings()
 	end)
 
-	Options.Teleport_to_Sea_Beast:SetValue(_G.Teleport_to_Sea_Beast)
+	Options.Teleport_to_Sea_Beast:SetValue(_G.Settings.Main["Teleport to Sea Beast"])
 
 	task.spawn(function()
 		while wait() do
@@ -4952,7 +4950,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.AutoSuperhuman:SetValue(_G.AutoSuperhuma)
+Options.AutoSuperhuman:SetValue(_G.Settings.Main["Auto Superhuman"])
 
 
 task.spawn(function()
@@ -5099,7 +5097,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.AutoDeathStep:SetValue(_G.AutoDeathStep)
+Options.AutoDeathStep:SetValue(_G.Settings.Main["Auto Death Step"])
 
 task.spawn(function()
 	while wait() do
@@ -5182,7 +5180,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.AutoSharkManKarate:SetValue(_G.AutoSharkManKarate)
+Options.AutoSharkManKarate:SetValue(_G.Settings.Main["Auto SharkMan Karate"])
 
 task.spawn(function()
 	while wait() do
@@ -5272,7 +5270,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Fully_SharkMan_Karate:SetValue(_G.Auto_Fully_SharkMan_Karate)
+	Options.Auto_Fully_SharkMan_Karate:SetValue(_G.Settings.Main["Auto Fully SharkMan Karate"])
 
 	local Toggle = Tabs.Main:AddToggle("Auto_Fully_DeathStep", {Title = "Auto Fully DeathStep", Default = false })
 
@@ -5284,7 +5282,7 @@ if World2 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Fully_DeathStep:SetValue(_G.Auto_Fully_DeathStep)
+	Options.Auto_Fully_DeathStep:SetValue(_G.Settings.Main["Auto Fully DeathStep"])
 
 end
 
@@ -5299,7 +5297,7 @@ if World3 then
 		SaveSettings()
 	end)
 
-	Options.Auto_Electric_Claw:SetValue(_G.Auto_Electric_Claw)
+	Options.Auto_Electric_Claw:SetValue(_G.Settings.Main["Auto Electric Claw"])
 
 	spawn(function()
 		while task.wait() do 
@@ -5343,7 +5341,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Dragon_Talon:SetValue(_G.Auto_Dragon_Talon)
+Options.Auto_Dragon_Talon:SetValue(_G.Settings.Main["Auto Dragon Talon"])
 
 task.spawn(function()
 	while wait() do
@@ -5427,7 +5425,7 @@ if not World1 then
 		SaveSettings()
 	end)
 
-	Options.Teleport_to_Sea_Beast:SetValue(_G.Teleport_to_Sea_Beast)
+	Options.Teleport_to_Sea_Beast:SetValue(_G.Settings.Main["Teleport to Sea Beast"])
 
 	task.spawn(function()
 		while wait() do
@@ -5514,7 +5512,7 @@ Toggle:OnChanged(function()
 	end
 end)
 
-Options.Disabled_Damage_Text:SetValue(_G.Disabled_Damage_Text)
+Options.Disabled_Damage_Text:SetValue(_G.Settings.Configs["Disabled Damage Text"])
 
 local Toggle = Tabs.Settings:AddToggle("Fast", {Title = "Fast Attack", Default = false })
 
@@ -5795,7 +5793,7 @@ task.spawn(function()
 end)
 
 
-Options.Fast:SetValue(_G.FastAttack)
+Options.Fast:SetValue(_G.Settings.Configs["Fast Attack"])
 
 local Toggle = Tabs.Settings:AddToggle("Brimob", {Title = "Bring Mob", Default = false })
 
@@ -5804,7 +5802,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Brimob:SetValue(_G.Bring_Mob)
+Options.Brimob:SetValue(_G.Settings.Configs["Bring Mob"])
 
 
 spawn(function()
@@ -5966,7 +5964,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.DisnableDame:SetValue(_G.DisnableDame)
+Options.DisnableDame:SetValue(_G.Settings.Configs["Disabled Damage"])
 
 
 function UseCode(Text)
@@ -6014,7 +6012,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.AutoRejoin:SetValue(_G.AutoRejoin)
+Options.AutoRejoin:SetValue(_G.Settings.Configs["Auto Rejoin"])
 
 spawn(function()
 	while wait() do
@@ -6037,7 +6035,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Skill_Z:SetValue(_G.Skill_Z)
+Options.Skill_Z:SetValue(_G.Settings.Configs["Skill Z"])
 
 local Toggle = Tabs.Settings:AddToggle("Skill_X", {Title = "Skill X", Default = false })
 
@@ -6046,7 +6044,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Skill_X:SetValue(_G.Skill_X)
+Options.Skill_X:SetValue(_G.Settings.Configs["Skill X"])
 
 local Toggle = Tabs.Settings:AddToggle("Skill_C", {Title = "Skill C", Default = false })
 
@@ -6055,7 +6053,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Skill_C:SetValue(_G.Skill_C)
+Options.Skill_C:SetValue(_G.Settings.Configs["Skill C"])
 
 local Toggle = Tabs.Settings:AddToggle("Skill_V", {Title = "Skill V", Default = false })
 
@@ -6064,7 +6062,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Skill_V:SetValue(_G.Skill_V)
+Options.Skill_V:SetValue(_G.Settings.Configs["Skill V"])
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -6126,7 +6124,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Spectate_Player:SetValue(_G.Spectate_Player)
+Options.Spectate_Player:SetValue(_G.Settings.Players["Spectate Player"])
 
 spawn(function()
 	while wait() do
@@ -6152,7 +6150,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Teleport_to_Player:SetValue(_G.Teleport_to_Player)
+Options.Teleport_to_Player:SetValue(_G.Settings.Players["Teleport to Player"])
 
 
 spawn(function()
@@ -6175,7 +6173,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Enabled_PvP:SetValue(_G.Enabled_PvP)
+Options.Enabled_PvP:SetValue(_G.Settings.Players["Enabled PvP"])
 
 spawn(function()
 	pcall(function()
@@ -6198,7 +6196,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Stats_Melee:SetValue(_G.Auto_Stats_Melee)
+Options.Auto_Stats_Melee:SetValue(_G.Settings.Stats["Auto Stats Melee"])
 
 spawn(function()
 	while wait() do
@@ -6224,7 +6222,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Stats_Defense:SetValue(_G.Auto_Stats_Defense)
+Options.Auto_Stats_Defense:SetValue(_G.Settings.Stats["Auto Stats Defense"])
 
 spawn(function()
 	while wait() do
@@ -6251,7 +6249,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Stats_Sword:SetValue(_G.Auto_Stats_Sword)
+Options.Auto_Stats_Sword:SetValue(_G.Settings.Stats["Auto Stats Sword"])
 
 
 spawn(function()
@@ -6275,7 +6273,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Stats_Gun:SetValue(_G.Auto_Stats_Gun)
+Options.Auto_Stats_Gun:SetValue(_G.Settings.Stats["Auto Stats Gun"])
 
 spawn(function()
 	while wait() do
@@ -6298,7 +6296,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Stats_Devil_Fruit:SetValue(_G.Auto_Stats_Devil_Fruit)
+Options.Auto_Stats_Devil_Fruit:SetValue(_G.Settings.Stats["Auto Stats Devil Fruit"])
 
 
 spawn(function()
@@ -6367,7 +6365,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Buy_Chip_Dungeon:SetValue(_G.Auto_Buy_Chip_Dungeon)
+Options.Auto_Buy_Chip_Dungeon:SetValue(_G.Settings.Dungeon["Auto Buy Chip Dungeon"])
 
 
 spawn(function()
@@ -6393,7 +6391,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Start_Dungeon:SetValue(_G.Auto_Start_Dungeon)
+Options.Auto_Start_Dungeon:SetValue(_G.Settings.Dungeon["Auto Dungeon"])
 
 spawn(function()
 	while wait() do
@@ -6427,7 +6425,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Next_Island:SetValue(_G.Auto_Next_Island)
+Options.Auto_Next_Island:SetValue(_G.Settings.Dungeon["Auto Next Island"])
 
 
 spawn(function()
@@ -6469,7 +6467,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Kill_Aura:SetValue(_G.Kill_Aura)
+Options.Kill_Aura:SetValue(_G.Settings.Dungeon["Kill Aura"])
 
 
 spawn(function()
@@ -6497,7 +6495,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Awake:SetValue(_G.Auto_Awake)
+Options.Auto_Awake:SetValue(_G.Settings.Dungeon["Auto Awake"])
 
 spawn(function()
 	while wait(.1) do
@@ -6530,7 +6528,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Buy_Law_Chip:SetValue(_G.Auto_Buy_Law_Chip)
+Options.Auto_Buy_Law_Chip:SetValue(_G.Settings.LawDungeon["Auto Buy Law Chip"])
 
 
 spawn(function()
@@ -6561,7 +6559,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Start_Law_Dungeon:SetValue(_G.Auto_Start_Law_Dungeon)
+Options.Auto_Start_Law_Dungeon:SetValue(_G.Settings.LawDungeon["Auto Start Law Dungeon"])
 
 spawn(function()
 	while wait() do
@@ -6585,7 +6583,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Kill_Law:SetValue(_G.Auto_Kill_Law)
+Options.Auto_Kill_Law:SetValue(_G.Settings.LawDungeon["Auto Kill Law"])
 
 
 spawn(function()
@@ -6652,7 +6650,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Buy_Devil_Fruit:SetValue(_G.Auto_Buy_Devil_Fruit)
+Options.Auto_Buy_Devil_Fruit:SetValue(_G.Settings.Fruit["Auto Buy Devil Fruit"])
 
 spawn(function()
 	while wait() do
@@ -6674,7 +6672,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Random_Fruit:SetValue(_G.Auto_Random_Fruit)
+Options.Auto_Random_Fruit:SetValue(_G.Settings.Fruit["Auto Random Fruit"])
 
 spawn(function()
 	while wait() do
@@ -6696,7 +6694,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Bring_Fruit:SetValue(_G.Auto_Bring_Fruit)
+Options.Auto_Bring_Fruit:SetValue(_G.Settings.Fruit["Auto Bring Fruit"])
 
 
 spawn(function()
@@ -6722,7 +6720,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Auto_Store_Fruit:SetValue(_G.Auto_Store_Fruit)
+Options.Auto_Store_Fruit:SetValue(_G.Settings.Fruit["Auto Store Fruit"])
 
 spawn(function()
 	while wait() do
@@ -7451,7 +7449,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.EspPlayer:SetValue(_G.EspPlayer)
+Options.EspPlayer:SetValue(_G.Settings.Esp["Esp Players"])
 
 local Toggle = Tabs.Misc:AddToggle("EspIsland", {Title = "Esp Island", Default = false })
 
@@ -7460,7 +7458,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.EspIsland:SetValue(_G.EspIsland)
+Options.EspIsland:SetValue(_G.Settings.Esp["Esp Island"])
 
 
 local Toggle = Tabs.Misc:AddToggle("EspFruit", {Title = "Esp Fruit", Default = false })
@@ -7470,7 +7468,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.EspFruit:SetValue(_G.EspFruit)
+Options.EspFruit:SetValue(_G.Settings.Esp["Esp Fruit"])
 
 
 
@@ -7481,7 +7479,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.EspFlower:SetValue(_G.EspFlower)
+Options.EspFlower:SetValue(_G.Settings.Esp["Esp Flower"])
 
 
 
@@ -7492,7 +7490,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.EspChest:SetValue(_G.EspChest)
+Options.EspChest:SetValue(_G.Settings.Esp["Esp Chest"])
 
 Tabs.Misc:AddSection("Misc")
 
@@ -7503,7 +7501,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.No_clip:SetValue(_G.No_clip)
+Options.No_clip:SetValue(_G.Settings.Misc["No clip"])
 
 
 spawn(function()
@@ -7527,7 +7525,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.Infinit_Energy:SetValue(_G.Infinit_Energy)
+Options.Infinit_Energy:SetValue(_G.Settings.Misc["Infinit Energy"])
 
 if _G.Infinit_Energy then
 	game:GetService("Players").LocalPlayer.Character.Energy.Changed:connect(function()
@@ -7544,7 +7542,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.CameraMaxZoom:SetValue(_G.CameraMaxZoom)
+Options.CameraMaxZoom:SetValue(_G.Settings.Misc["Infinit CameraMaxZoom"])
 
 game.Players.LocalPlayer.CameraMinZoomDistance = 10
 if _G.CameraMaxZoom then
@@ -7561,7 +7559,7 @@ Toggle:OnChanged(function()
 	SaveSettings()
 end)
 
-Options.WalkWater:SetValue(_G.WalkWater)
+Options.WalkWater:SetValue(_G.Settings.Misc["Walk on Water"])
 
 spawn(function()
 	while task.wait() do
