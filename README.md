@@ -140,7 +140,7 @@ _G.Settings = {
 	Boss = {
 		["Auto Quest Boss"] = false,
 		["Auto Farm Boss"] = false,
-		["Auto Farm All Boss"] = true,
+		["Auto Farm All Boss"] = false,
 	},
 
 	Mastery = {
@@ -1394,40 +1394,32 @@ spawn(function()
 		pcall(function()
 			if _G.Auto_Farm_Level then
 				if QuestC.Visible == true then
-					if game:GetService("Workspace").Enemies:FindFirstChild(QuestCheck()[3]) then
-						for _i,_v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-							if string.find(_v.Name,QuestCheck()[3]) then
-								for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-									if string.find(v.Name,QuestCheck()[3]) then
-										if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-											repeat wait()
-												if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, QuestCheck()[6]) then
-													game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
-												else
-													PosMon = v.HumanoidRootPart.CFrame
-													v.HumanoidRootPart.Size = Vector3.new(50,50,50)
-													v.HumanoidRootPart.CanCollide = false
-													v.Humanoid.WalkSpeed = 0
-													v.Head.CanCollide = false
-													BringMobFarm = true
-													AutoHaki()
-													EquipWeapon(_G.Select_Weapon)
-													v.HumanoidRootPart.Transparency = 1
-													getgenv().ToTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-												end
-											until not _G.Auto_Farm_Level or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
-										end
+					for _i,_v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+						if string.find(_v.Name,QuestCheck()[3]) then
+							for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+								if string.find(v.Name,QuestCheck()[3]) then
+									if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+										repeat wait()
+											if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, QuestCheck()[6]) then
+												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
+											else
+												PosMon = v.HumanoidRootPart.CFrame
+												v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+												v.HumanoidRootPart.CanCollide = false
+												v.Humanoid.WalkSpeed = 0
+												v.Head.CanCollide = false
+												BringMobFarm = true
+												AutoHaki()
+												EquipWeapon(_G.Select_Weapon)
+												v.HumanoidRootPart.Transparency = 1
+												getgenv().ToTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+											end
+										until not _G.Auto_Farm_Level or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
 									end
 								end
 							end
-						end 
-					else
-						for i,v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
-							if v.Name == QuestCheck()[6] then local CFrameEnemySpawns = v.CFrame  wait(0.5)
-								getgenv().ToTarget(CFrameEnemySpawns * MethodFarm)
-							end
 						end
-					end
+					end 
 				else
 					if (QuestCheck()[2].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > 2000 then
 						BTP(QuestCheck()[2])
@@ -5790,6 +5782,43 @@ end)
 
 Options.Brimob:SetValue(_G.Settings.Configs["Bring Mob"])
 
+spawn(function()
+	while task.wait() do
+		pcall(function()
+			if _G.Bring_Mob then
+				for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+					if _G.Auto_Farm_Level and BringMobFarm and v.Name == QuestCheck()[3] and (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 225 and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+						v.HumanoidRootPart = PosMon
+						v.HumanoidRootPart.CanCollide = false
+						v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+						if v.Humanoid:FindFirstChild("Animator") then
+							v.Humanoid.Animator:Destroy()
+						end
+						sethiddenproperty(game:GetService("Players").LocalPlayer, "SimulationRadius", math.huge)
+					elseif _G.Auto_Farm_Mob_Aura and PosMonAura and (v.HumanoidRootPart.Position - PosMonAura.Position).magnitude <= 225 then
+						v.HumanoidRootPart = PosMonAura
+						v.HumanoidRootPart.CanCollide = false
+						v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+						if v.Humanoid:FindFirstChild("Animator") then
+							v.Humanoid.Animator:Destroy()
+						end
+						sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+					elseif _G.Auto_Farm_Bone and PosMonBone and (v.Name == "Reborn Skeleton [Lv. 1975]" or v.Name == "Living Zombie [Lv. 2000]" or v.Name == "Demonic Soul [Lv. 2025]" or v.Name == "Posessed Mummy [Lv. 2050]") and (v.HumanoidRootPart.Position - PosMonBone.Position).magnitude <= 225 then
+						v.HumanoidRootPart = PosMonBone
+						v.HumanoidRootPart.CanCollide = false
+						v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
+						if v.Humanoid:FindFirstChild("Animator") then
+							v.Humanoid.Animator:Destroy()
+						end
+						sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+						-- ... (similar changes for other cases)
+					end
+				end
+			end
+		end)
+	end
+end)
+
 
 spawn(function()
 	while task.wait() do
@@ -5797,7 +5826,7 @@ spawn(function()
 			if _G.Bring_Mob then
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 					if _G.Auto_Farm_Level and BringMobFarm and v.Name == QuestCheck()[3] and (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 225 and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then	
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMon)
+						v.HumanoidRootPart.CFrame = PosMon
 						v.HumanoidRootPart.CanCollide = false
 						v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
 						if v.Humanoid:FindFirstChild("Animator") then
@@ -5805,7 +5834,7 @@ spawn(function()
 						end
 						sethiddenproperty(game:GetService("Players").LocalPlayer,"SimulationRadius",math.huge)
 					elseif _G.Auto_Farm_Mob_Aura and PosMonAura and (v.HumanoidRootPart.Position - PosMonAura.Position).magnitude <= 225 then
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMonAura)
+						v.HumanoidRootPart.CFrame = PosMonAura
 						v.HumanoidRootPart.CanCollide = false
 						v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 						if v.Humanoid:FindFirstChild("Animator") then
@@ -5813,7 +5842,7 @@ spawn(function()
 						end
 						sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
 					elseif _G.Auto_Farm_Bone and PosMonBone and (v.Name == "Reborn Skeleton [Lv. 1975]" or v.Name == "Living Zombie [Lv. 2000]" or v.Name == "Demonic Soul [Lv. 2025]" or v.Name == "Posessed Mummy [Lv. 2050]") and (v.HumanoidRootPart.Position - PosMonBone.Position).magnitude <= 225 then
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMonBone)
+						v.HumanoidRootPart.CFrame = PosMonBone
 						v.HumanoidRootPart.CanCollide = false
 						v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 						if v.Humanoid:FindFirstChild("Animator") then
@@ -5821,7 +5850,7 @@ spawn(function()
 						end
 						sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
 					elseif _G.Auto_Cake_Prince and StartCakeMagnet and (v.Name == "Cookie Crafter [Lv. 2200]" or v.Name == "Cake Guard [Lv. 2225]" or v.Name == "Baking Staff [Lv. 2250]" or v.Name == "Head Baker [Lv. 2275]") and (v.HumanoidRootPart.Position - POSCAKE.Position).magnitude <= 225 then
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == POSCAKE)
+						v.HumanoidRootPart.CFrame = POSCAKE
 						v.HumanoidRootPart.CanCollide = false
 						v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 						if v.Humanoid:FindFirstChild("Animator") then
@@ -5829,7 +5858,7 @@ spawn(function()
 						end
 						sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
 					elseif _G.Auto_Musketeer_Hat and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 225 then
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMon)
+						v.HumanoidRootPart.CFrame = PosMon
 						v.HumanoidRootPart.CanCollide = false
 						v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
 						if v.Humanoid:FindFirstChild("Animator") then
@@ -5837,7 +5866,7 @@ spawn(function()
 						end
 						sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
 					elseif _G.Auto_Farm_Mob_Aura and (v.HumanoidRootPart.Position - PosMonAura.Position).magnitude <= 225 then
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMonAura)
+						v.HumanoidRootPart.CFrame = PosMonAura
 						v.HumanoidRootPart.CanCollide = false
 						v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
 						if v.Humanoid:FindFirstChild("Animator") then
@@ -5876,7 +5905,7 @@ spawn(function()
 						v.Humanoid:ChangeState(14)
 						v.HumanoidRootPart.CanCollide = false
 						v.Head.CanCollide = false
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMonMasteryGun)
+						v.HumanoidRootPart.CFrame = PosMonMasteryGun
 						if v.Humanoid:FindFirstChild("Animator") then
 							v.Humanoid.Animator:Destroy()
 						end
@@ -5886,7 +5915,7 @@ spawn(function()
 						v.Humanoid:ChangeState(14)
 						v.HumanoidRootPart.CanCollide = false
 						v.Head.CanCollide = false
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMonMasteryGun)
+						v.HumanoidRootPart.CFrame = PosMonMasteryGun
 						if v.Humanoid:FindFirstChild("Animator") then
 							v.Humanoid.Animator:Destroy()
 						end
@@ -5896,7 +5925,7 @@ spawn(function()
 						v.Humanoid:ChangeState(14)
 						v.HumanoidRootPart.CanCollide = false
 						v.Head.CanCollide = false
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMonMasteryGun)
+						v.HumanoidRootPart.CFrame = PosMonMasteryGun
 						if v.Humanoid:FindFirstChild("Animator") then
 							v.Humanoid.Animator:Destroy()
 						end
@@ -5906,7 +5935,7 @@ spawn(function()
 						v.Humanoid:ChangeState(14)
 						v.HumanoidRootPart.CanCollide = false
 						v.Head.CanCollide = false
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMonMasteryFruit)
+						v.HumanoidRootPart.CFrame = PosMonMasteryFruit
 						if v.Humanoid:FindFirstChild("Animator") then
 							v.Humanoid.Animator:Destroy()
 						end
@@ -5916,7 +5945,7 @@ spawn(function()
 						v.Humanoid:ChangeState(14)
 						v.HumanoidRootPart.CanCollide = false
 						v.Head.CanCollide = false
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMonMasteryFruit)
+						v.HumanoidRootPart.CFrame = PosMonMasteryFruit
 						if v.Humanoid:FindFirstChild("Animator") then
 							v.Humanoid.Animator:Destroy()
 						end
@@ -5926,7 +5955,7 @@ spawn(function()
 						v.Humanoid:ChangeState(14)
 						v.HumanoidRootPart.CanCollide = false
 						v.Head.CanCollide = false
-						getgenv().ToTarget(v.HumanoidRootPart.CFrame == PosMonMasteryFruit)
+						v.HumanoidRootPart.CFrame = PosMonMasteryFruit
 						if v.Humanoid:FindFirstChild("Animator") then
 							v.Humanoid.Animator:Destroy()
 						end
